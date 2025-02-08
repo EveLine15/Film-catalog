@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(31, 39, 27);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: rgb(125, 83, 222);
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.row-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px 0;
+}
+.row-menu p {
+  font-family: "Saira", serif;
+  color: rgb(252, 247, 248);
+  font-size: 30px;
+}
+.row-menu .logo {
+  display: flex;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+  align-items: center;
+}
+.row-menu .logo img {
+  width: 70px;
+  height: 70px;
+}
+.row-menu .favourit {
+  transition: 0.2s;
+}
+.row-menu .favourit:hover {
+  color: rgb(40, 13, 102);
+  transform: scale(1.05);
+}
+
+.enter-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/peopleFilm.png") center 25%/cover no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0), 80%, rgba(0, 0, 0, 0));
+          mask-image: linear-gradient(to bottom, rgb(0, 0, 0), 80%, rgba(0, 0, 0, 0));
+  height: 400px;
+}
+.enter-section .enter-text {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.enter-section .main-text {
+  font-size: 60px;
+}
+.enter-section p {
+  font-family: "Saira", serif;
+  color: rgb(252, 247, 248);
+  font-size: 25px;
+}
+
+.list-section {
+  margin-top: 40px;
+}
+
+.card-holder {
+  display: grid;
+  grid-template-columns: repeat(3, 28%);
+  justify-content: space-between;
+  row-gap: 40px;
+}
+
+.poster {
+  transition: 0.2s;
+  transform-origin: center;
+}
+.poster img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.poster img:hover {
+  box-shadow: 0 0 20px 10px rgba(125, 83, 222, 0.562);
+}
+
+.poster:hover {
+  transform: scale(1.1);
+}
+
+.modal-window {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  display: flex;
+  background-color: rgb(31, 39, 27);
+  border-radius: 10px;
+  width: 65%;
+  height: 75%;
+  padding: 30px;
+  justify-content: space-between;
+}
+.modal-content .left-part {
+  transition: 0.2s;
+}
+.modal-content .left-part img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.modal-content .right-part {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.modal-content .right-part h1 {
+  font-family: "Saira", serif;
+  color: rgb(252, 247, 248);
+  font-size: 45px;
+}
+.modal-content .right-part p {
+  font-family: "Saira", serif;
+  color: rgb(252, 247, 248);
+  font-size: 25px;
+  text-align: right;
+  color: rgb(184, 180, 181);
+}
+.modal-content .right-part .info-holder {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-rows: auto;
+}
+.modal-content .right-part .button-holder {
+  display: flex;
+  justify-content: center;
+}
+.modal-content .right-part .button-holder button {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 60px;
+  padding: 10px;
+  border: 1px rgb(125, 83, 222) solid;
+  border-radius: 10px;
+  background-color: transparent;
+  font-family: "Saira", serif;
+  color: rgb(252, 247, 248);
+  font-size: 25px;
+  transition: 0.2s;
+}
+.modal-content .right-part .button-holder button:hover {
+  background-color: rgb(125, 83, 222);
+}/*# sourceMappingURL=style.css.map */
