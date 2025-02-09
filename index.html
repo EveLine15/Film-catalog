@@ -13,7 +13,7 @@
                 <div class="logo">
                     <img src="./images/icons8-film-100.png" alt="">
                 </div>
-                <p class="favourit">Favourites</p>
+                <a href="./favourites.html" class="favourit">Избранное</a>
             </div>
         </div>
     </header>
@@ -21,8 +21,8 @@
     <main>
         <section class="enter-section">
                 <div class="enter-text">
-                    <p class="main-text">Your personal online film catalog</p>
-                    <p>The biggest library of the coolest movies. Choosing films and saves them into "favourites"</p>
+                    <p class="main-text">Ваш личный каталог фильмов</p>
+                    <p class="small-text">Самая большая библиотека лучших фильмов! Вы можете добавить фильм в избранное, чтобы не потерять интересующие фильмы</p>
                 </div>
         </section>
 
@@ -33,6 +33,31 @@
                 </div>
             </div>
         </section>
+
+        <div class="modal-window modal-closed">
+            <div class="modal-content">
+                <div class="left-part">
+                    <img src="" alt="poster">
+                </div>
+                <div class="right-part">
+                    <h1 class="name"></h1>
+                    <div class="info-holder">
+                        <p class="lable">Производство:</p>
+                        <p class="production"></p>
+                        <p class="lable">Жанры:</p>
+                        <p class="genre"></p>
+                        <p class="lable">Продолжительность:</p>
+                        <p class="duration"></p>
+                        <p class="lable">Премьера:</p>
+                        <p class="premiere"></p>
+                    </div>
+                    <div class="button-holder">
+                        <button class="favourit-button active">Добавить в избранное</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
     
     <script src="./app.js"></script>

@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
-$font: "Saira", serif;
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+$font: "Victor Mono", serif;
 
 @mixin font($font-size){
     font-family: $font;
     color: rgb(252, 247, 248);
     font-size: $font-size;
+    font-weight: 700;
 }
 
 *{
@@ -15,6 +16,11 @@ $font: "Saira", serif;
 
 body{
     background-color: rgb(31, 39, 27);
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
 }
 
 header{
@@ -35,8 +41,9 @@ header{
     width: 100%;
     padding: 5px 0;
 
-    p{
+    a{
         @include font(30px);
+        text-decoration: none;
     }
 
     .logo{
@@ -75,10 +82,16 @@ header{
     }
     .main-text{
         font-size: 60px;
+        padding-bottom: 15px;
+    }
+
+    .small-text{
+        width: 80%;
     }
 
     p{
-        @include font(25px)
+        @include font(25px);
+        text-align: center;
     }
 }
 
@@ -104,7 +117,8 @@ header{
     }
 
     img:hover{
-        box-shadow: 0 0 20px 10px rgba(125, 83, 222, 0.562);
+        border: 5px rgb(125, 83, 222) solid;
+        //box-shadow: 0 0 20px 10px rgba(125, 83, 222, 0.562);
     }
 }
 
@@ -126,14 +140,19 @@ header{
     align-items: center;
 }
 
+.modal-closed{
+    visibility: hidden;
+}
+
 .modal-content{
     display: flex;
     background-color: rgb(31, 39, 27);
     border-radius: 10px;
-    width: 65%;
-    height: 75%;
+    width: 60%;
+    height: 65%;
     padding: 30px;
     justify-content: space-between;
+    border: 5px rgb(125, 83, 222) solid;
 
     .left-part{
         transition: 0.2s;   
@@ -164,8 +183,13 @@ header{
 
         .info-holder{
             display: grid;
-            grid-template-columns: 35% 65%;
+            grid-template-columns: 42% 58%;
             grid-template-rows: auto;
+            column-gap: 10px;
+
+            .lable{
+                text-align: start;
+            }
         }
 
         .button-holder{
@@ -176,16 +200,47 @@ header{
                 width: fit-content;
                 height: 60px;
                 padding: 10px;
-                border: 1px rgb(125, 83, 222) solid;
+                border: 3px rgb(125, 83, 222) solid;
                 border-radius: 10px;
-                background-color: transparent;
+                background-color: rgb(125, 83, 222);
                 @include font(25px);
                 transition: .2s;
+                position: relative;
+            }
+
+            button.active{
+                background-color: transparent;
             }
 
             button:hover{
-                background-color: rgb(125, 83, 222);
+                transform: scale(1.2);
             }
+
+            button::after {
+                content: "Добавлено в избранное!";
+                position: absolute;
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 14px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s, transform 0.3s;
+            }
+
+            button.show-message::after {
+                opacity: 1;
+                transform: translateX(-50%) translateY(-5px);
+            }
+            
+            // button:active {
+            //     transform: scale(1.2);
+            //     opacity: 1;
+            // }
         }
     }
 }

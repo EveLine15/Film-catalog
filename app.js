@@ -1552,57 +1552,102 @@ const app = {
     ],
   };
 
-  const cardHolder = document.querySelector('.card-holder');
-  const main = document.querySelector('main');
+const cardHolder = document.querySelector('.card-holder');
+const main = document.querySelector('main');
+const body = document.querySelector('body');
+const modalWindow = document.querySelector('.modal-window');
+const fButton = document.querySelector('.favourit-button');
 
-  changeLayout();
+let favourites = [];
+if(localStorage.favour){
+  favourites = JSON.parse(localStorage.favour);
+  console.log(favourites)
+}
 
-  function changeLayout(){
-    app.items.forEach(element => {
-        const poster = document.createElement('div');
-        poster.classList.add('poster');
-        poster.innerHTML += `<img src="${element.posterUrl}" id="${element.kinopoiskId}" alt="film">`;
-        cardHolder.appendChild(poster);
-    });
-  }
+changeLayout();
 
-  cardHolder.addEventListener("click", (event) => {
-    if(event.target.matches("img")){
-      const {id} = event.target;
-      const chosenFilm = app.items.find(film => film.kinopoiskId === +id);
-      main.innerHTML += `
-      <div class="modal-window">
-                <div class="modal-content">
-                    <div class="left-part">
-                        <img src="${chosenFilm.posterUrl}" alt="poster">
-                    </div>
-                    <div class="right-part">
-                        <h1>${chosenFilm.nameEn ? chosenFilm.nameEn : chosenFilm.nameRu}</h1>
-                        <div class="info-holder">
-                            <p>Производство:</p>
-                            <p>${chosenFilm.year}, ${chosenFilm.countries.map(item => item.country).join(', ')}</p>
-                            <p>Жанры:</p>
-                            <p>${chosenFilm.genres.map(item => item.genre).join(', ')}</p>
-                            <p>Продолжительность:</p>
-                            <p>${minConvert(chosenFilm.duration)}</p>
-                            <p>Премьера:</p>
-                            <p>${chosenFilm.premiereRu}</p>
-                        </div>
-                        <div class="button-holder">
-                            <button>Add to "favourite</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-      `
-    }
+function changeLayout(){
+  app.items.forEach(element => {
+      const poster = document.createElement('div');
+      poster.classList.add('poster');
+      poster.innerHTML += `<img src="${element.posterUrl}" id="${element.kinopoiskId}" alt="film">`;
+      cardHolder.appendChild(poster);
   });
+}
 
-  function minConvert(minutes){
-    const hours = Math.floor(minutes / 60);
-    const extraMinutes = minutes % 60;
-    return `${hours} ч ${extraMinutes} мин`;
+cardHolder.addEventListener("click", (event) => {
+  if(event.target.matches("img")){
+    const {id} = event.target;
+    const chosenFilm = app.items.find(film => film.kinopoiskId === +id);      
+    body.classList.add('no-scroll');
+    modalWindow.classList.remove('modal-closed');
+    modalWindow.querySelector('img').setAttribute('src', chosenFilm.posterUrl);
+    const info = modalWindow.querySelector('.right-part');
+    info.querySelector('.name').textContent = chosenFilm.nameEn ? chosenFilm.nameEn : chosenFilm.nameRu;
+    info.querySelector('.production').textContent = `${chosenFilm.year}, ${chosenFilm.countries.map(item => item.country).join(', ')}`;
+    info.querySelector('.genre').textContent = chosenFilm.genres.map(item => item.genre).join(', ');
+    info.querySelector('.duration').textContent = minConvert(chosenFilm.duration);
+    info.querySelector('.premiere').textContent = chosenFilm.premiereRu;
+
+    window.addEventListener('click', closeModal);
+
+    function closeModal(event){
+      if(event.target.matches('.modal-window')){
+        modalWindow.classList.add('modal-closed');
+        body.classList.remove("no-scroll");
+        localStorage.favour = JSON.stringify(favourites);
+        fButton.removeEventListener('click', addToFavourite);
+      } 
+    }
+
+    //содержиться ли нажатый фильм в localStorage
+    if(!(JSON.parse(localStorage.favour).map(item => item.kinopoiskId)).find(idFilm => idFilm === +id)){
+        console.log('notInLocalStorage');
+        fButton.classList.add('active');
+        fButton.textContent = 'Добавить в избранное';
+    }
+
+    else{
+      fButton.classList.remove('active');
+      fButton.textContent = 'Добавленно в избранное';
+    }
+
+    fButton.addEventListener('click', addToFavourite);      
+
+    function addToFavourite(){
+      if(!favourites.map(item => item.kinopoiskId).find(idFilm => idFilm === +id)){
+        console.log('inLocalStorage');
+        favourites.push(chosenFilm);
+        console.log(favourites);
+
+        fButton.classList.add("show-message");
+        setTimeout(() => {
+            fButton.classList.remove("show-message");
+        },1500);
+
+        fButton.classList.remove('active');
+        fButton.textContent = 'Добавленно в избранное';
+      }
+
+      else{
+        console.log('inLocalStorage');
+        favourites = favourites.filter(item => item.kinopoiskId !== +id);
+        console.log(favourites)
+        fButton.classList.add('active');
+        fButton.textContent = 'Добавить в избранное';
+      }
+    }
   }
+});
+
+
+function minConvert(minutes){
+  const hours = Math.floor(minutes / 60);
+  const extraMinutes = minutes % 60;
+  return `${hours} ч ${extraMinutes} мин`;
+}
+
+
   
   ///1. Отрисовать фильмы
   //- постер
