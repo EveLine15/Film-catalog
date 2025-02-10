@@ -26,6 +26,11 @@ header {
   max-width: 1024px;
   margin: 0 auto;
 }
+@media screen and (max-width: 1082px) {
+  .container {
+    max-width: 95%;
+  }
+}
 
 .row-menu {
   display: flex;
@@ -40,6 +45,19 @@ header {
   font-size: 30px;
   font-weight: 700;
   text-decoration: none;
+}
+.row-menu a .heart-favourite {
+  display: none;
+}
+@media screen and (max-width: 425px) {
+  .row-menu a .heart-favourite {
+    display: block;
+  }
+}
+@media screen and (max-width: 425px) {
+  .row-menu a p {
+    display: none;
+  }
 }
 .row-menu .logo {
   display: flex;
@@ -65,6 +83,11 @@ header {
           mask-image: linear-gradient(to bottom, rgb(0, 0, 0), 80%, rgba(0, 0, 0, 0));
   height: 400px;
 }
+@media screen and (max-width: 746px) {
+  .enter-section {
+    height: 300px;
+  }
+}
 .enter-section .enter-text {
   display: flex;
   height: 100%;
@@ -73,8 +96,9 @@ header {
   justify-content: center;
 }
 .enter-section .main-text {
-  font-size: 60px;
+  font-size: clamp(35px, 3vw, 60px);
   padding-bottom: 15px;
+  margin: 0 10px;
 }
 .enter-section .small-text {
   width: 80%;
@@ -82,7 +106,7 @@ header {
 .enter-section p {
   font-family: "Victor Mono", serif;
   color: rgb(252, 247, 248);
-  font-size: 25px;
+  font-size: clamp(15px, 1.5vw, 25px);
   font-weight: 700;
   text-align: center;
 }
@@ -93,9 +117,20 @@ header {
 
 .card-holder {
   display: grid;
-  grid-template-columns: repeat(3, 28%);
+  grid-template-columns: repeat(3, 31%);
   justify-content: space-between;
   row-gap: 40px;
+}
+@media screen and (max-width: 1082px) {
+  .card-holder {
+    grid-template-columns: repeat(3, 30%);
+  }
+}
+@media screen and (max-width: 526px) {
+  .card-holder {
+    grid-template-columns: repeat(2, 48%);
+    row-gap: 20px;
+  }
 }
 
 .poster {
@@ -143,14 +178,66 @@ header {
   padding: 30px;
   justify-content: space-between;
   border: 5px rgb(125, 83, 222) solid;
+  overflow-y: auto;
 }
-.modal-content .left-part {
-  transition: 0.2s;
+@media screen and (max-width: 1587px) {
+  .modal-content {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1335px) {
+  .modal-content {
+    width: 90%;
+    height: 70%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .modal-content {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 626px) {
+  .modal-content {
+    flex-direction: column;
+    height: 95%;
+    width: 80%;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 425px) {
+  .modal-content {
+    flex-direction: column;
+    height: 95%;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .modal-content .left-part {
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 626px) {
+  .modal-content .left-part {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
 .modal-content .left-part img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+}
+@media screen and (max-width: 1024px) {
+  .modal-content .left-part img {
+    width: 300px;
+    height: 450px;
+  }
+}
+@media screen and (max-width: 626px) {
+  .modal-content .left-part img {
+    width: 100%;
+    height: 100%;
+  }
 }
 .modal-content .right-part {
   width: 55%;
@@ -158,16 +245,31 @@ header {
   flex-direction: column;
   justify-content: space-between;
 }
+@media screen and (max-width: 1159px) {
+  .modal-content .right-part {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .modal-content .right-part {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 626px) {
+  .modal-content .right-part {
+    width: 100%;
+  }
+}
 .modal-content .right-part h1 {
   font-family: "Victor Mono", serif;
   color: rgb(252, 247, 248);
-  font-size: 45px;
+  font-size: clamp(20px, 3vw, 45px);
   font-weight: 700;
 }
 .modal-content .right-part p {
   font-family: "Victor Mono", serif;
   color: rgb(252, 247, 248);
-  font-size: 25px;
+  font-size: clamp(15px, 3vw, 25px);
   font-weight: 700;
   text-align: right;
   color: rgb(184, 180, 181);
@@ -179,8 +281,22 @@ header {
   -moz-column-gap: 10px;
        column-gap: 10px;
 }
+@media screen and (max-width: 1024px) {
+  .modal-content .right-part .info-holder {
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-content .right-part .info-holder p {
+    text-align: start;
+  }
+}
 .modal-content .right-part .info-holder .lable {
   text-align: start;
+}
+@media screen and (max-width: 1024px) {
+  .modal-content .right-part .info-holder .lable {
+    margin-top: 15px;
+  }
 }
 .modal-content .right-part .button-holder {
   display: flex;
@@ -200,6 +316,19 @@ header {
   font-weight: 700;
   transition: 0.2s;
   position: relative;
+}
+@media screen and (max-width: 754px) {
+  .modal-content .right-part .button-holder button {
+    height: 75px;
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 626px) {
+  .modal-content .right-part .button-holder button {
+    font-size: 15px;
+    height: 65px;
+    margin-top: 10px;
+  }
 }
 .modal-content .right-part .button-holder button.active {
   background-color: transparent;

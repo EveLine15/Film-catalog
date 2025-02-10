@@ -21,6 +21,19 @@ body{
 .container{
     max-width: 1024px;
     margin: 0 auto;
+
+    @media screen and (max-width: 1082px) {
+        max-width: 95%;
+    }
+}
+
+.back{
+    display: flex;
+    align-items: center;
+
+    img{
+        margin-right: 20px;
+    }
 }
 
 main{
@@ -28,15 +41,28 @@ main{
 
     h1{
         @include font(60px);
+
+        @media screen and (max-width: 768px) {
+            font-size: 30px;
+        }
     }
 }
 
 .card-holder{
     display: grid;
-    grid-template-columns: repeat(3, 28%);
+    grid-template-columns: repeat(4, 22%);
     justify-content: space-between;
     row-gap: 40px;
     margin-top: 30px;
+
+    @media screen and (max-width: 1110px) {
+        grid-template-columns: repeat(3, 30%);
+    }
+
+    @media screen and (max-width: 526px) {
+        grid-template-columns: repeat(2, 48%);
+        row-gap: 20px;
+    }
 }
 
 .poster{

@@ -32,6 +32,10 @@ header{
 .container{
     max-width: 1024px;
     margin: 0 auto;
+
+    @media screen and (max-width: 1082px) {
+        max-width: 95%;
+    }
 }
 
 .row-menu{
@@ -44,6 +48,22 @@ header{
     a{
         @include font(30px);
         text-decoration: none;
+
+        .heart-favourite{
+            display: none;
+
+            @media screen and (max-width: 425px){
+                display: block;
+            }
+        }
+
+        p{
+            @media screen and (max-width: 425px){
+                display: none;
+            }
+        }
+
+
     }
 
     .logo{
@@ -71,6 +91,9 @@ header{
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/peopleFilm.png') center 25%/cover no-repeat;
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), 80%,  rgba(0,0,0,0));
     height: 400px;
+    @media screen and (max-width: 746px) {
+        height: 300px;
+    }
 
     .enter-text{
         display: flex;
@@ -81,8 +104,9 @@ header{
         
     }
     .main-text{
-        font-size: 60px;
+        font-size: clamp(35px, 3vw, 60px);
         padding-bottom: 15px;
+        margin: 0 10px;
     }
 
     .small-text{
@@ -90,7 +114,7 @@ header{
     }
 
     p{
-        @include font(25px);
+        @include font(clamp(15px, 1.5vw, 25px));
         text-align: center;
     }
 }
@@ -101,9 +125,18 @@ header{
 
 .card-holder{
     display: grid;
-    grid-template-columns: repeat(3, 28%);
+    grid-template-columns: repeat(3, 31%);
     justify-content: space-between;
     row-gap: 40px;
+
+    @media screen and (max-width: 1082px) {
+        grid-template-columns: repeat(3, 30%);
+    }
+
+    @media screen and (max-width: 526px) {
+        grid-template-columns: repeat(2, 48%);
+        row-gap: 20px;
+    }
 }
 
 .poster{
@@ -153,14 +186,60 @@ header{
     padding: 30px;
     justify-content: space-between;
     border: 5px rgb(125, 83, 222) solid;
+    overflow-y: auto;
+
+    @media screen and (max-width: 1587px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 1335px) {
+        width: 90%;
+        height: 70%;
+    }
+
+    @media screen and (max-width: 1024px){
+        width: 95%;
+    }
+
+    @media screen and (max-width: 626px){
+        flex-direction: column;
+        height: 95%;
+        width: 80%;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 425px){
+        flex-direction: column;
+        height: 95%;
+        align-items: center;
+    }
 
     .left-part{
-        transition: 0.2s;   
+        //transition: 0.2s;
+
+        @media screen and (max-width: 1024px){
+            margin-right: 20px;
+        }
+
+        @media screen and (max-width: 626px){
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
 
         img{
             width: 100%;
             height: 100%;
             border-radius: 10px;
+
+            @media screen and (max-width: 1024px){
+                width: 300px;
+                height: 450px;
+            }
+
+            @media screen and (max-width: 626px){
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 
@@ -171,14 +250,31 @@ header{
         flex-direction: column;
         justify-content: space-between;
 
+        @media screen and (max-width: 1159px) {
+            width: 45%;
+        }
+
+        @media screen and (max-width: 1024px){
+            width: 70%;
+        }
+
+        @media screen and (max-width: 626px){
+            width: 100%;
+        }
+
         h1{
-            @include font(45px);
+            @include font(clamp(20px, 3vw, 45px));
+
         }
 
         p{
-            @include font(25px);
+            @include font(clamp(15px, 3vw, 25px));
             text-align: right;
             color: rgb(184, 180, 181);
+
+            // @media screen and (max-width: 900px){
+            //     font-size: 20px;
+            // }
         }
 
         .info-holder{
@@ -187,8 +283,21 @@ header{
             grid-template-rows: auto;
             column-gap: 10px;
 
+            @media screen and (max-width: 1024px) {
+                display: flex;
+                flex-direction: column;
+
+                p{
+                    text-align: start;
+                }
+            }
+
             .lable{
                 text-align: start;
+
+                @media screen and (max-width: 1024px){
+                    margin-top: 15px;
+                }
             }
         }
 
@@ -206,6 +315,17 @@ header{
                 @include font(25px);
                 transition: .2s;
                 position: relative;
+
+                @media screen and (max-width: 754px){
+                    height: 75px;
+                    font-size: 18px;
+                }
+
+                @media screen and (max-width: 626px){
+                    font-size: 15px;
+                    height: 65px;
+                    margin-top: 10px;
+                }
             }
 
             button.active{

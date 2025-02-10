@@ -1640,7 +1640,6 @@ cardHolder.addEventListener("click", (event) => {
   }
 });
 
-
 function minConvert(minutes){
   const hours = Math.floor(minutes / 60);
   const extraMinutes = minutes % 60;
