@@ -188,7 +188,7 @@ header {
 @media screen and (max-width: 1335px) {
   .modal-content {
     width: 90%;
-    height: 70%;
+    height: 80%;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -280,6 +280,7 @@ header {
   grid-template-rows: auto;
   -moz-column-gap: 10px;
        column-gap: 10px;
+  row-gap: 10px;
 }
 @media screen and (max-width: 1024px) {
   .modal-content .right-part .info-holder {
@@ -316,8 +317,9 @@ header {
   font-weight: 700;
   transition: 0.2s;
   position: relative;
+  margin-top: 10px;
 }
-@media screen and (max-width: 754px) {
+@media screen and (max-width: 786px) {
   .modal-content .right-part .button-holder button {
     height: 75px;
     font-size: 18px;
@@ -327,7 +329,6 @@ header {
   .modal-content .right-part .button-holder button {
     font-size: 15px;
     height: 65px;
-    margin-top: 10px;
   }
 }
 .modal-content .right-part .button-holder button.active {

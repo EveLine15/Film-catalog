@@ -1563,6 +1563,7 @@ if(localStorage.favour){
   favourites = JSON.parse(localStorage.favour);
   console.log(favourites)
 }
+else localStorage.favour = JSON.stringify(favourites);
 
 changeLayout();
 
